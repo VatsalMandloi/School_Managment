@@ -1,22 +1,25 @@
-#include<fstream.h>
-#include<iomanip.h>
+#include<fstream>
+#include<iostream>
+#include<iomanip>
 #include<string.h>
+#include<stdlib.h>
 #include<stdio.h>
 #include<conio.h>
+using namespace std;
 class student
 {
 	int rollno;
 	char name[50];
 	char dob[9];
-	int p_marks, c_marks, m_marks, e_marks, cs_marks;	//for storing of marks in different subjects
+	int p_marks, c_marks, m_marks, e_marks, cs_marks;
 	float per;
 	char grade;
-	void calculate();	//to calculate grade of students
+	void calculate();
 public:
-	void getdata();  //to get student information
-	void showdata();  //to display details to students
-	void show_tabular();	//to display marks and grades in marksheet(tabular) form
-	int retrollno();	//it return rollno for the purpose to display a result of particular student
+	void getdata();
+	void showdata();
+	void show_tabular();
+	int retrollno();
 };
 void student::calculate()
 {
@@ -35,10 +38,12 @@ void student::getdata()
 {
 	cout<<"\nEnter The roll number of student ";
 	cin>>rollno;
+	fflush(stdin);
 	cout<<"\n\nEnter The Name of student ";
-	gets(name);
+	cin.getline(name,20);
+	fflush(stdin);
 	cout<<"\nEnter The Date Of Birth of student";
-	gets(dob);
+	cin.getline(dob,9);
 	cout<<"\nEnter The marks in physics out of 100 : ";
 	cin>>p_marks;
 	cout<<"\nEnter The marks in chemistry out of 100 : ";
@@ -78,29 +83,30 @@ int student::retrollno()
 {
 	return rollno;
 }
-void write_student();		//to save student information in a file by calling get_data fuction
-void display_all();		//it display all student information from file using Show_data function
-void display_sp(int);		//it display result of particular student 
-void modify_student(int);		//it modify student information in file
-void delete_student(int);		//it enable user to delete a particular student information
-void class_result();			//it display all student result in tabular form from file using Show_data function
-void result();		//it provide user inferface to toggle between class result,student result
+void write_student();
+void display_all();
+void display_sp(int);
+void modify_student(int);
+void delete_student(int);
+void class_result();
+void result();
+void intro();
 void entry_menu();
-void main()
+int main()
 {
 	char ch;
 	cout.setf(ios::fixed|ios::showpoint);
 	cout<<setprecision(2);
-	clrscr();
+	system("cls");
 	do
-	{       clrscr();
+	{     system("cls");
 		cout<<"\n\n\n\tMAIN MENU";
 		cout<<"\n\n\t01. RESULT MENU";
 		cout<<"\n\n\t02. ENTRY/EDIT MENU";
 		cout<<"\n\n\t03. EXIT";
 		cout<<"\n\n\tPlease Select Your Option (1-3) ";
 		cin>>ch;
-		clrscr();
+		system("cls");
 		switch(ch)
 		{
 			case '1': result();
@@ -113,6 +119,7 @@ void main()
 		}
 	}while(ch!='3');
 getch();
+return 0;
 }
 void write_student()
 {
@@ -266,7 +273,7 @@ void result()
 	cout<<"\n\n\t3. Back to Main Menu";
 	cout<<"\n\n\n\tEnter Choice (1/2/3)? ";
 	cin>>ch;
-	clrscr();
+	system("cls");
 	switch(ch)
 	{
 	case '1' :class_result(); break;
@@ -281,7 +288,7 @@ void entry_menu()
 {
 	char ch;
 	int num;
-	clrscr();
+system("cls");
 	cout<<"\n\n\n\tENTRY MENU";
 	cout<<"\n\n\t1.CREATE STUDENT RECORD";
 	cout<<"\n\n\t2.DISPLAY ALL STUDENTS RECORDS";
@@ -291,7 +298,7 @@ void entry_menu()
 	cout<<"\n\n\t6.BACK TO MAIN MENU";
 	cout<<"\n\n\tPlease Enter Your Choice (1-6) ";
 	cin>>ch;
-	clrscr();
+	system("cls");
 	switch(ch)
 	{
 	case '1':	write_student(); break;
