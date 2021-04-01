@@ -8,15 +8,15 @@ class student
 	int rollno;
 	char name[50];
 	char dob[9];
-	int p_marks, c_marks, m_marks, e_marks, cs_marks;
+	int p_marks, c_marks, m_marks, e_marks, cs_marks;	//for storing of marks in different subjects
 	float per;
 	char grade;
-	void calculate();
+	void calculate();	//to calculate grade of students
 public:
-	void getdata();
-	void showdata();
-	void show_tabular();
-	int retrollno();
+	void getdata();  //to get student information
+	void showdata();  //to display details to students
+	void show_tabular();	//to display marks and grades in marksheet(tabular) form
+	int retrollno();	//it return rollno for the purpose to display a result of particular student
 };
 void student::calculate()
 {
@@ -78,14 +78,13 @@ int student::retrollno()
 {
 	return rollno;
 }
-void write_student();
-void display_all();
-void display_sp(int);
-void modify_student(int);
-void delete_student(int);
-void class_result();
-void result();
-void intro();
+void write_student();		//to save student information in a file by calling get_data fuction
+void display_all();		//it display all student information from file using Show_data function
+void display_sp(int);		//it display result of particular student 
+void modify_student(int);		//it modify student information in file
+void delete_student(int);		//it enable user to delete a particular student information
+void class_result();			//it display all student result in tabular form from file using Show_data function
+void result();		//it provide user inferface to toggle between class result,student result
 void entry_menu();
 void main()
 {
